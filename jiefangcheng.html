@@ -28,7 +28,8 @@
       a == "" ? a = NaN : a = Number(a);
       b == "" ? b = NaN : b = Number(b);
       c == "" ? c = NaN : c = Number(c);
-
+      //所有非0-9的字符，全被被转化为NaN,所以使用!Number.isNaN来判断是输入是否都是数
+      //字
       if (!Number.isNaN(a) && !Number.isNaN(b) && !Number.isNaN(c)) {
 
         //提前计算，用变量代替复杂算式
@@ -54,7 +55,7 @@
           alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
         }
       } else {
-        alert("请大佬输入有效数值");
+        alert("拜托大佬输个数字吧！");
         alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
       }
     } else
@@ -72,27 +73,34 @@
       d == "" ? d = NaN : d = Number(d);
       e == "" ? e = NaN : e = Number(e);
       f == "" ? f = NaN : f = Number(f);
-      if (!Number.isNaN(a) && !Number.isNaN(b) && !Number.isNaN(c) && !Number.isNaN(d) && !Number.isNaN(e) && !Number.isNaN(
-          f)) {
-        //两条线斜率不同有一个解，斜率相同要么平行，要么重合
-        //平行无解，重合无数个解
-        if ((a / d) !== (b / e)) {
-          x = (e * c - b * f) / (a * e - d * d);
-          y = (d * c - a * f) / (d * b - a * e);
-          alert("函数有唯一的解：" + "\n" + "x为: " + x + "\n" + "y为 " + y);
-          alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+      //二元一次方程，系数不可以为零
+      if ((a * b * d * e) !== 0) {
+        if (!Number.isNaN(a) && !Number.isNaN(b) && !Number.isNaN(c) && !Number.isNaN(d) && !Number.isNaN(e) && !Number
+          .isNaN(
+            f)) {
+          //两条线斜率不同有一个解，斜率相同要么平行，要么重合
+          //平行无解，重合无数个解
+          if ((a / d) !== (b / e)) {
+            x = (e * c - b * f) / (a * e - d * d);
+            y = (d * c - a * f) / (d * b - a * e);
+            alert("函数有唯一的解：" + "\n" + "x为: " + x + "\n" + "y为 " + y);
+            alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+          } else {
+            if ((a / d) == (b / e) == (c / f)) {
+              alert("函数有无数解");
+              alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+            }
+            if ((a / d) == (b / e) !== (c / f)) {
+              alert("函数无解");
+              alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+            }
+          }
         } else {
-          if ((a / d) == (b / e) == (c / f)) {
-            alert("函数有无数解");
-            alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
-          }
-          if ((a / d) == (b / e) !== (c / f)) {
-            alert("函数无解");
-            alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
-          }
+          alert("拜托大佬输个数字吧！");
+          alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
         }
       } else {
-        alert("请大佬输入有效数值");
+        alert("报告大佬：二元一次方程系数不可以为零");
         alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
       }
 
