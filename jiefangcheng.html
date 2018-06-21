@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数验证</title>
+
+  <script>
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    var d = 0;
+    var e = 0;
+    var f = 0;
+    var x = 0;
+    var y = 0;
+    var x1 = 0;
+    var x1 = 0;
+    var FUNC = confirm("是否进行一元二次方程验证？");
+    if (true == FUNC) {
+      a = prompt("请输入方程二次项 a:");
+      b = prompt("请输入方程一次项 b:");
+      c = prompt("请输入方程常数项 c:");
+      //在用户不输入的情况下Numeber函数会把传回的空字符串转化为零，为了与用手动输入的
+      //零做区分所以先验证输入的合法性
+      if (!Number.isNaN(a) && !Number.isNaN(a) && !Number.isNaN(a)) {
+        a = Number(a);
+        b = Number(b);
+        c = Number(c);
+      //提前计算，用变量代替复杂算式
+        var da = b * b - 4 * a * c;
+        var dt = -(2 * b * b / 2 * a);
+
+        if (da < 0) {
+          //Δ小于零，为了能开方，先转化为正数
+          da = -1 * da;
+          //da = 4 * a * c - b * b;
+          x1 = dt + "+" + Math.sqrt(da) + "i";
+          x2 = dt + "-" + Math.sqrt(da) + "i";
+          alert("方程无实数根，有两个负数根：" + "\n" + "第一个根是：" + x1 + " " + "\n" + "第二个根是：" + x2);
+          alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+        } else
+        if (da == 0) {
+          x = dt;
+          alert("函数只有一个根，根为：" + x);
+        } else {
+          X1 = dt + Math.sqrt(da);
+          x2 = dt - Math.sqrt(da);
+          alert("方程有两个实数根：" + "\n" + "第一个根是：" + x1 + "\n" + "第二个根是：" + x2);
+          alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+        }
+      } else {
+        alert("请大佬输入有效数值");
+      }
+    } else
+    if (confirm("是否验证二元一次方程？" + "\n" + "如需验证一元二次方程，请刷新浏览器")) {
+      a = prompt("请输入方程式(ax+by=c)中系数 a:");
+      b = prompt("请输入方程式(ax+by=c)中系数 b:");
+      c = prompt("请输入方程式(ax+by=c)中常数项 c:");
+      d = prompt("请输入方程式(dx+ey=f)中系数 d:");
+      e = prompt("请输入方程式(dx+ey=f)中系数 e:");
+      f = prompt("请输入方程式(dx+ey=f)中常数项 f:");
+      //合法性验证
+      if (!Number.isNaN(a) && !Number.isNaN(b) && !Number.isNaN(c) && !Number.isNaN(d) && !Number.isNaN(e) && !Number.isNaN(f)) {
+        //两条线斜率不同有一个解，斜率相同要么平行，要么重合
+        //平行无解，重合无数个解
+        if ((a / d) !== (b / e)) {
+          x = (e * c - b * f) / (a * e - d * d);
+          y = (d * c - a * f) / (d * b - a * e);
+          alert("函数有唯一的解：" + "\n" + "x为: " + x + "\n" + "y为 " + y);
+          alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+        } else {
+          if ((a / d) == (b / e) == (c / f)) {
+            alert("函数有无数解");
+            alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+          }
+          if ((a / d) == (b / e) !== (c / f)) {
+            alert("函数无解");
+            alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+          }
+        }
+      }
+    } else {
+      alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
