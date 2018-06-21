@@ -25,10 +25,12 @@
       c = prompt("请输入方程常数项 c:");
       //在用户不输入的情况下Numeber函数会把传回的空字符串转化为零，为了与用手动输入的
       //零做区分所以先验证输入的合法性
-      if (Number.isNaN(a) && Number.isNaN(b) && Number.isNaN(c)) {
-        a = Number(a);
-        b = Number(b);
-        c = Number(c);
+      a == "" ? a = NaN : a = Number(a);
+      b == "" ? b = NaN : b = Number(b);
+      c == "" ? c = NaN : c = Number(c);
+
+      if (!Number.isNaN(a) && !Number.isNaN(b) && !Number.isNaN(c)) {
+
         //提前计算，用变量代替复杂算式
         var da = b * b - 4 * a * c;
         var dt = -(2 * b * b / 2 * a);
@@ -56,7 +58,7 @@
         alert("即将退出验证!" + "\n" + "如需进行函数验证，请刷新网页");
       }
     } else
-    if (confirm("是否验证二元一次方程？" + "\n" + "如需验证一元二次方程，请刷新浏览器")) {
+    if (confirm("是否验证二元一次方程？" + "\n" + "如需验二元一次方程，请刷新浏览器")) {
       a = prompt("请输入方程式(ax+by=c)中系数 a:");
       b = prompt("请输入方程式(ax+by=c)中系数 b:");
       c = prompt("请输入方程式(ax+by=c)中常数项 c:");
@@ -64,7 +66,13 @@
       e = prompt("请输入方程式(dx+ey=f)中系数 e:");
       f = prompt("请输入方程式(dx+ey=f)中常数项 f:");
       //合法性验证
-      if (Number.isNaN(a) && Number.isNaN(b) && Number.isNaN(c) && Number.isNaN(d) && Number.isNaN(e) && Number.isNaN(
+      a == "" ? a = NaN : a = Number(a);
+      b == "" ? b = NaN : b = Number(b);
+      c == "" ? c = NaN : c = Number(c);
+      d == "" ? d = NaN : d = Number(d);
+      e == "" ? e = NaN : e = Number(e);
+      f == "" ? f = NaN : f = Number(f);
+      if (!Number.isNaN(a) && !Number.isNaN(b) && !Number.isNaN(c) && !Number.isNaN(d) && !Number.isNaN(e) && !Number.isNaN(
           f)) {
         //两条线斜率不同有一个解，斜率相同要么平行，要么重合
         //平行无解，重合无数个解
