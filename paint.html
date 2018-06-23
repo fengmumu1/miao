@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>画图</title>
+  <style>
+    canvas {
+      border: 2px solid #f0f;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas width="400" height="300"></canvas>
+</body>
+<script>
+  var cvs = document.querySelector('canvas')
+  var ctx = cvs.getContext('2d')
+
+  function dot(x, y, color = 'black') {
+    ctx.fillStyle = color
+    ctx.fillRect(x, y, 1, 1)
+  }
+</script>
+<script>
+  // YOUR CODE GOES HERE
+  //zx_x为小循环黑点个数，zx_y为小循环白点个数，zx_x1/zxy1,zx_x2/zx_y2分别是直线
+  //起点坐标和终点坐标,clo为颜色,k为斜率 zx_h为有颜色的个数, zx_b为没有颜色的个数,
+  // zx(1, 1, 1, 100, "black", 2, 2)
+  // zx(5, 5, 5, 100, "green", 0, 2)
+  // zx(1, 100, 200, 100, "black", 5, 1)
+  // zx(1, 1, 250, 250, "black", 5, 1) 
+
+  function zx(zx_x1, zx_y1, zx_x2, zx_y2, clo, zx_h, zx_b) {
+    var temp_x
+    var temp_y
+    var coint
+
+    var temp_zx = zx_h * zx_b
+    temp_x = zx_x1
+    temp_y = zx_y1
+
+    if ((zx_x2 - zx_x1) == 0) { //判断线段是水平还是垂直或者倾斜
+      while (temp_y !== zx_y2) { //判断是否到达终点
+        if (temp_zx !== 0) { //判断是否要画点话线
+          //有色和没有色成周期，通过求余得出目前的颜色状态
+          coint = temp_y % (zx_b + zx_h)
+          //由于正好是整数倍，余数为零，所以需要把零单独讨论
+          if ((coint <= zx_h) && (coint !== 0)) {
+            dot(temp_x, temp_y, clo)
+          } else if ((coint > zx_h) || (coint == 0)) {
+             dot(temp_x, temp_y, 'white')
+            // dot(temp_x, temp_y, '#FF3333')
+            //白色不是那么明显，用红色比较容易看出来
+          }
+        } else {
+          dot(temp_x, temp_y, clo)
+        }
+
+        temp_y++
+      }
+    } else if ((zx_y2 - zx_y1) == 0) {
+      while (temp_x !== zx_x2) {
+        if (temp_zx !== 0) {
+          coint = temp_x % (zx_b + zx_h)
+          if ((coint <= zx_h) && (coint !== 0)) {
+            dot(temp_x, temp_y, clo)
+          } else if ((coint > zx_h) || (coint == 0)) {
+             dot(temp_x, temp_y, 'white')
+            // dot(temp_x, temp_y, '#FF3333')
+            //白色不是那么明显，用红色比较容易看出来
+          }
+        } else {
+          dot(temp_x, temp_y, clo)
+        }
+        temp_x++
+      }
+    } else {
+      var k_temp = (zx_y2 - zx_y1) / (zx_x2 - zx_x1)
+      while (temp_x !== zx_x2) {
+        temp_y =  Math.round(((temp_x) * k_temp))
+        if (temp_zx !== 0) {
+          coint = temp_x % (zx_b + zx_h)
+          if ((coint <= zx_h) && (coint !== 0)) {
+            dot(temp_x, temp_y, clo)
+          } else if ((coint > zx_h) || (coint == 0)) {
+             dot(temp_x, temp_y, 'white')
+            // dot(temp_x, temp_y, '#FF3333')
+            //白色不是那么明显，用红色比较容易看出来
+          }
+        } else {
+          dot(temp_x, temp_y, clo)
+        }
+        temp_x = 0.5 + temp_x 
+      }
+
+    }
+  }
+
+  //fk_x1, fk_y2分别是左上角的起点, fk_x2, fk_y2 分别是右下角的起点
+  //clo_sta, clo_xend, clo_yend 分别是渐变色的起始颜色以及x轴y轴变色范围
+  //实际有可能输入的是左下，或者右下这样子的非法输入，此外可以调节精度，使画面更细腻
+  //由于主要目的还是熟悉语法，所以函数没有做相关的判断和功能
+  //fk(1, 1, 254, 254, 0xffff00, 0xffffff, 0xff0000)
+  // fk(2, 2, 26, 26, 0xffff00, 0xffffff, 0xff0000)
+
+  function fk(fk_x1, fk_y1, fk_x2, fk_y2, clo_sta, clo_xend, clo_yend) {
+
+    var clo_sta_number = Number( (clo_sta).toString(10)  )
+    var clo_xend_number = Number( (clo_xend).toString(10)  )
+    var clo_yend_number = Number( (clo_yend).toString(10)  )
+    
+    var clo_temp = clo_sta_number
+    var clo_temp_x = Math.abs(clo_xend_number - clo_sta_number) / Math.abs(fk_x2 - fk_x1)
+    var clo_temp_y = Math.abs(clo_yend_number - clo_sta_number) / Math.abs(fk_y2 - fk_y1)
+
+    for (var fk_ytemp = fk_y1; fk_ytemp < fk_y2; fk_ytemp++) {
+
+      for (var fk_xtemp = fk_x1; fk_xtemp < fk_x2; fk_xtemp++) {
+        dot(fk_xtemp, fk_ytemp, ("#" + (clo_temp).toString(16)))
+        ;(clo_xend_number - clo_sta_number) > 0 ? clo_temp = Math.fround( clo_temp + clo_temp_x): clo_temp = Math.fround(clo_temp - clo_temp_x) 
+      }
+      ;(clo_yend_number - clo_sta_number) > 0 ? clo_temp = Math.fround( clo_temp + clo_temp_y): clo_temp = Math.fround(clo_temp - clo_temp_y ) 
+       clo_temp = clo_temp & 0xffff00 
+       //清除低八位 防止进入内层循环 低八位进位（程序不足的是：低八位总不能渐进的加到
+       //FF）
+    }
+
+
+  }
+
+  //y_x,y_y是圆心坐标,y_r试试半径，y_c是圆的颜色
+  // yuan(50,50,8,"red")
+  function yuan(y_x, y_y, y_r, y_c){
+    for (var i=0 ; i < 360; i++){
+      var y_y_temp = Math.fround((y_r * Math.sin((i * Math.PI) / 180))) + y_x
+      var y_x_temp = Math.fround((y_r * Math.cos((i * Math.PI) / 180))) + y_y
+
+      dot(y_x_temp, y_y_temp, y_c)
+    }
+  }
+
+  /*
+  画一条实线
+  画一条一个实点一个空点的虚线
+  画一条两个实点两个空点的虚线
+  画一条三个实点两个空点的虚线
+  画一条45度的斜线
+  画一条跨越画布左上角和右下角的对角线
+  画一个实心矩形
+  画一个rgb色彩空间的某一面
+  画一个空心的圆
+  晚点我给出一个模板
+  400宽 300高
+  */
+    zx(2,5,200,5,"green",0,1)
+    zx(2,8,200,8,"blue",1,1)
+    zx(2,12,200,12,"pink",2,2)
+    zx(2,15,200,15,"Violet",3,2)
+    zx(10,10,200,200,"cyan",0,1)
+    zx(300,0,300,300,"red",0,1)
+
+    fk(25, 25, 50, 50, 0xfffefd, 0xfffefd, 0xfffefd)
+    fk(55, 55, 100, 100, 0xffff00, 0xffffff, 0xff0000) 
+  
+     yuan(125,125,10,"teal")
+
+
+</script>
+
+</html>
