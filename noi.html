@@ -6,32 +6,379 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 
-  <script id="ch0105/01">
+  //以下代码均未作输入合法性检测，默认输入均为正确格式
+  <script id="ch0105/01" type="xx" >
     var reshu = Number(prompt("输入人数："))
     var cous = 0
     var vau_temp = 0 
     for(var i = 0; i < reshu; i++){
-      vau_tem = Number(prompt("输入年龄："))
+      vau_temp = Number(prompt("输入年龄："))
       cous += vau_temp 
     }
     cous = (cous / reshu).toFixed(2)
     console.log(cous)
-
   </script>
 
 
+  <script id="ch0105/02" type="xx">
+    var sur = 0;
+    var sur_temp = 0;
+    for(var i = 0; i< 12; i++){
+       sur_temp = Number(prompt("输入月余额"))
+       sur += sur_temp
+    }
+
+    sur = (sur/12).toFixed(2)
+
+  console.log("$" + sur)
+  </script>
+
+
+  <script id="ch0105/03" type="xx">
+    var numb_105_03 = Number(prompt("输入项数："))
+    var cous_105_03 = 0
+    var cous_temp_105_03 = 0
+
+    for (var i = 0; i < numb_105_03; i++) {
+      cous_temp_105_03 = Number(prompt("输入数："))
+      cous_105_03 = cous_105_03 + cous_temp_105_03
+    }
+
+    console.log((cous_105_03 / numb_105_03).toFixed(4))
+  </script>
+
+  <script id="ch0105/04" type="xx">
+    var reshu = Number(prompt("输入个数："))
+    var cous = 0
+    var vau_temp = 0 
+    var jg = 0
+    for(var i = 0; i < reshu; i++){
+      vau_temp = Number(prompt("输入数值："))
+      cous += vau_temp 
+    }
+     jg = Math.round(cous)
+    cous = (cous / reshu).toFixed(5)
+    console.log(jg +" "+ cous)
+  
+  </script>
+
+  <script id="ch0105/05" type="xx">
+    var num_105_05 = Number(prompt("输入项数"))
+    var x_105_05 = 0
+    var max_num_105_05 = 0
+
+    for (var i = 0; i < num_105_05; i++) {
+      x_105_05 = Number(prompt("输入数字"))
+      if (max_num_105_05 < x_105_05) {
+        max_num_105_05 = x_105_05
+      }
+    }
+
+    console.log(max_num_105_05)
+  </script>
+
+  <script id="ch0105/06" type="xx">
+    var max_numb = 0
+    var min_numb = 0
+    var numb_temp = 0
+    var numb =  prompt("输入数目")
+    for(var i = 0; i < numb; i++){
+      numb_temp = prompt("输入第"+(i+1)+"个数 :")
+      if(i == 0){
+        max_numb = min_numb = numb_temp
+      }
+      if(numb_temp >= max_numb) max_numb = numb_temp
+      if(numb_temp < min_numb) min_numb = numb_temp
+    }
+    
+    console.log(max_numb - min_numb)
+
+  </script>
+
+  <script id="ch0105/07" type="xx">
+  var jin = 0
+  var yin = 0
+  var tong = 0
+  var tianshu =  Number(prompt("输入天数"))
+
+  for (var i = 0; i<tianshu; i++){
+    for (var j = 0; j < 3; j++) {
+      if (j == 0) {
+       jin = Number(prompt("第"+ (i + 1) +"天金牌：")) + jin
+      }
+      if (j == 1) {
+       yin = Number(prompt("第"+ (i + 1) +"天银牌：")) + yin
+      }
+      if (j == 2) {
+       tong = Number(prompt("第"+ (i + 1) +"天铜牌：")) + tong
+      }
+    }
+  }
+
+  console.log(jin + " " + yin + " " + tong + " " + (jin + yin + tong))
+  </script>
+
+  /*
+  描述
+  在欧几里德几何中，n边形的内角和是(n-2)*180°。已知其中(n-1)个内角的度数，就能计算出剩下的一个未知内角的度数。请编写一个程序，来解决这个问题。
+  输入
+  第1行只有一个整数n(2第2行有(n-1)个正整数，是每个已知内角的度数。相邻两个整数之间用单个空格隔开。
+  数据保证给定多边形合法。
+  输出
+  一个正整数，为未知内角的度数。
+  题目表述不清，猜测第一行为多边形边的个数，第二行为其内角数目-1 个内角的度数
+  */
+  <script id="ch0105/08" type="xx">
+    var n = Number(prompt("输入边数:"))
+    var jiaodu = 0
+    var jieguo = 0
+
+    for(var i = 1; i < n; i++){
+      jiaodu = Number(prompt("请输入第" + i + "个边的度数 ")) + jiaodu
+    } 
+    
+    jieguo = (n-2) * 180 - jiaodu
+    console.log(jieguo)
+  </script>
+
+  //Sn= (2a1 + d*(n-1))n/2
+  <script id="ch0105/09" type="xxx" >
+    var numb_sta = Number(prompt("输入起始数值"))
+    var numb_end = Number(prompt("输入结束数值"))
+    var n = 0;
+    var sn = 0;
+    //开头结尾一奇一偶 奇偶数目各占一半，反之奇数多一个或者少一个
+    if(numb_sta == 1){
+      (numb_end % 2) == 0? n = ((numb_end - numb_sta + 1) / 2): n = (((numb_end - numb_sta) + 2) / 2)   
+    }else{
+      if (numb_sta%2 == 0) {
+        if (numb_end%2 == 0) {
+          n = ((numb_end - numb_sta + 2) / 2)
+        } else {
+          n = (numb_end - numb_sta + 1) / 2 
+        }
+      } else {
+        if (numb_end%2 == 0) {
+          n = (numb_end - numb_sta + 1) / 2
+        } else {
+          n = (numb_end - numb_sta + 2) / 2
+        } 
+        }
+    }
+    numb_sta %2 == 0 ?numb_sta += 1: numb_sta = numb_sta
+   //Sn= (2a1 + d*(n-1))n/2  
+    sn = ((numb_sta * 2 + 2 * (n - 1)) * n) / 2
+    console.log(sn)
+  </script>
+
+  /*
+  定理：把一个至少两位的正整数的个位数字去掉，再从余下的数中减去个位数的5倍。当且仅当差是17的倍数时，原数也是17的倍数 。
+  例如，34是17的倍数，因为3-20=-17是17的倍数；201不是17的倍数，因为20-5=15不是17的倍数。输入一个正整数n，你的任务是判断它是否是17的倍数
+  参考:http://bbs.bccn.net/thread-446410-1-1.html
+  网上的思路是，把多位数全部转化成三位数或者二位数，不断的使用法则来干掉最后一位
+  parseInt 取整
+  */
+  <script id="ch0105/10" type="xxx">
+    var sta_105_10_numb = Number(prompt("请输入第一个数 "))
+    var end_105_10_numb = Number(prompt("请输入第二个数 "))
+    var temp_105_10_numb = 0
+    var cous_105_10 = 0
+    for(sta_105_10_numb; sta_105_10_numb <= end_105_10_numb; sta_105_10_numb++){
+      if(sta_105_10_numb >= 100){
+        temp_105_10_numb = parseInt(sta_105_10_numb / 10) * 10 - (sta_105_10_numb % 10 * 5)  
+        temp_105_10_numb % 17 == 0? cous_105_10 += sta_105_10_numb: cous_105_10 += 0
+      } else if (sta_105_10_numb >= 10) {
+        temp_105_10_numb = parseInt(sta_105_10_numb / 10) - (sta_105_10_numb % 10 * 5)  
+        temp_105_10_numb % 17 == 0? cous_105_10 += sta_105_10_numb: cous_105_10 += 0
+      }   
+    }
+    
+    console.log(cous_105_10)
+  </script>
+
+  <script id="ch0105/11" type="xxx">
+    var numb_105_11 = 0;
+    var time_1_105_11 = 0
+    var time_5_105_11 = 0
+    var time_10_105_11 = 0
+    var temp_time_105_11 = 0 
+
+    numb_105_11 = Number(prompt("请输入次数"))
+    for (var i = 1; i <= numb_105_11; i++) {
+      temp_time_105_11 = Number(prompt("请输入第" + i + "个数"))
+      if(temp_time_105_11 == 1) time_1_105_11 += 1
+      if(temp_time_105_11 == 5) time_5_105_11 += 1
+      if(temp_time_105_11 == 10) time_10_105_11 += 1
+    }
+
+   console.log(time_1_105_11)
+   console.log(time_5_105_11)
+   console.log(time_10_105_11)
+  </script>
+
+  <script id="ch0105/12" type="xxx">
+    var sum_1015_12 = Number(prompt("输入一共多少 "))
+    var flg_105_12 = Number(prompt("输入需要比对的数字"))
+    var con_105_12 = 0
+    var con_temp_105_12 = 0;
+
+    for (var i = 0; i < sum_1015_12; i++) {
+      con_temp_105_12 = Number(prompt("请输入第" + (i + 1) + "个数"))
+      if (con_temp_105_12 == flg_105_12) {
+        con_105_12 ++
+      }
+    }
+
+    console.log(con_105_12)
+
+  </script>
+
+  <script id="ch0105/13" type="xxx">
+    var numb_105_13 = Number(prompt("输入底数："))
+    var inde_105_13 = Number(prompt("输入指数："))
+    var cous_105_13 = 1
+
+    for (inde_105_13; inde_105_13 >= 1; inde_105_13--) {
+      cous_105_13 *= numb_105_13
+    }
+    console.log(cous_105_13)
+
+  </script>
+
+  <script id="ch0105/14" type="xxx">
+    var man_105_14 = Number(prompt("输入人口基数"))
+    var ind_105_104 = Number(prompt("输入年数："))
+
+    for (ind_105_104; ind_105_104 >0; ind_105_104--) {
+      man_105_14 *= 1.001
+    }
+    console.log(man_105_14.toFixed(4))
+
+  </script>
+
+  <script id="ch0105/15" type="xxx">
+    var m_105_15 = Number(prompt("复合利息"))
+    var r_105_15 = Number(prompt("本金"))
+    var y_105_15 = Number(prompt("年数"))
+
+    for (y_105_15; y_105_15 > 0; y_105_15--) {
+      r_105_15 = r_105_15 * ( 100 + m_105_15 ) / 100
+    }
+
+    console.log(parseInt(r_105_15))
+  </script>
+
+  <script id="ch0105/16" type="xxx">
+    var pay_105_16 = Number(prompt("请输入年薪："))
+    var grow_105_16 = Number(prompt("请输入利率"))
+    var hous_105_16 = 200;
+    var hous_temp_105_16 = 200
+    var mony_105_16 = 0
+    var year_105_16 = 1
+    for ( year_105_16 ; mony_105_16 <= hous_105_16; year_105_16++) {    
+      mony_105_16 = year_105_16 * pay_105_16
+      hous_105_16 += (grow_105_16  * hous_temp_105_16 / 100)
+    }
+    year_105_16 > 20? year_105_16 = Impossible: year_105_16 = year_105_16
+    console.log(year_105_16)
+  </script>
+
+<script id="ch0105/17" type="xxx">
+  var numb_105_17 = Number(prompt("输入个数"))
+  var prev_105_17 = 1
+  var last_105_17 = 1
+
+  var cous_105_17 = 2;
+  if(numb_105_17 > 2){
+
+    for (var i = 3; i <= numb_105_17; i++) {
+      cous_105_17 = prev_105_17 + last_105_17
+      prev_105_17 = last_105_17
+      last_105_17 = cous_105_17  
+      }
+
+  } else {
+    numb_105_17 = 1;
+  }
+
+  console.log(cous_105_17)
+
+</script>
+
+<script id="ch0105/18" type="xxx">
+
+  var numb_105_18 = Number(prompt("总行数"))
+  var falg_tutal_105_18 = Number(prompt("鸡尾酒疗法的总人数："))
+  var flag_valid_105_18 =  Number(prompt("鸡尾酒疗法的有效数："))
+
+  var falg_temp_tutal_105_18 = 0
+  var flag_temp_valid_105_18 = 0
+  var flag_temp_105_18 = 0
+
+  var flag_105_18 = parseInt((flag_valid_105_18 / falg_tutal_105_18) * 100)
+  for (var i = 1; i < numb_105_18; i++) {
+    falg_temp_tutal_105_18 = Number(prompt("混合法的总人数："))
+    flag_temp_valid_105_18 =  Number(prompt("混合疗法的有效数："))
+    
+    flag_temp_105_18 = parseInt((flag_temp_valid_105_18 / falg_temp_tutal_105_18) * 100)
+
+    if ((flag_temp_105_18 - flag_105_18) > 5) {
+      console.log("better")
+    } else if ((flag_105_18 - flag_temp_105_18) > 5) {
+      console.log("worse") 
+    } else {
+      console.log("same")
+    }
+  }
 
 
 
 
 
+</script>
+
+<script id="ch0105/19" type="xxx">
+  var numb_105_18 = Number(prompt("请输入屋顶数目："))
+  var x_105_18 = 0
+  var y_105_18 = 0
+  var peo_105_18 = 0
+  var distance_105_18 = 0
+
+  var time_105_18 = 0;
+  for (var i=0; i < numb_105_18; i++) {
+    x_105_18 = Number(prompt("输入屋顶x坐标："))
+    y_105_18 = Number(prompt("输入屋顶y坐标："))
+    peo_105_18 = Number(prompt("输入人数："))
+
+    distance_105_18 = Math.ceil(Math.sqrt(x_105_18 * x_105_18 + y_105_18 * y_105_18))
+
+    time_105_18 = (distance_105_18 / 50) * 2 + peo_105_18 * 1.5
+    console.log(Math.ceil(time_105_18))
+  }
 
 
+</script>
+
+<script id="ch0105/20" type="xxx">
+  var h_105_20 = Number(prompt("请输入高度："))
+  var s_105_20 = 0
+  var h_end_105_20 = 0
+
+  for (var i = 0; i < 10; i++) {
+    if( i < 1) {
+      s_105_20 = h_105_20
+    } 
+    if( i >= 1 ) {
+      s_105_20 = s_105_20 + h_105_20 * 2
+    }
+    h_105_20 = h_105_20 * 0.5
+    h_end_105_20 = h_105_20
+  }
+  console.log(s_105_20)
+  console.log(h_end_105_20)
 
 
-
-
-
+</script>
 
 </head>
 <body>
