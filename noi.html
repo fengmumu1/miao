@@ -501,7 +501,7 @@
   }
 </script>
 
-<script id="ch0104/12" xtype="xxx">
+<script id="ch0104/12" type="xxx">
   var s_104_11 = Number(prompt("xx"))
   var bik_104_11 = 0
   var wal_104_11 = 0
@@ -514,9 +514,76 @@
   if (bik_104_11 > wal_104_11) console.log("Walk")
 </script>
 
+<script id="ch0104/13" type="xxx">
+  var num_104_13 = Number(prompt("xx"))
+  var y_104_103 = 0
+
+  if (num_104_13 < 5 && num_104_13 >= 0) {
+    y_104_103 = -num_104_13 + 2.5
+  } else if (num_104_13 < 10) {
+    y_104_103 = 2 - 1.5(num_104_13 - 3)(num_104_13 - 3)
+  } else if (num_104_13 < 20) {
+    y_104_103 = num_104_13 / 2 - 1.5
+  }
+  console.log(y_104_103.toFixed(3))
+</script>
+
+<script id="ch0104/14" type="xxx">
+var g_104_14 = Number(prompt("xxx"))
+var y_104_14 = prompt("xxx")
+
+var mony_104_14 = Math.ceil(((g_104_14 - 1000) / 500)) * 4 + 8 
+if(y_104_14 == "y"){
+console.log(mony_104_14 + 5)
+}else{
+  console.log(mony_104_14)
+}
+</script>
+
+<script id="ch0104/15" type="xxx">
+
+  var x_104_15 = 0
+  var max_104_15 = 0
+  for (var i = 0; i < 3; i++) {
+    x_104_15 = Number(prompt("输入数字"))
+    if (max_104_15 < x_104_15) {
+      max_104_15 = x_104_15
+    }
+  }
+
+  console.log(max_104_15)
+
+</script>
+
+<script id="ch0104/16" type="xxx">
+  var a_104_16 = Number(prompt("xxx")) 
+  var b_104_16 = Number(prompt("xxx")) 
+  var c_104_16 = Number(prompt("xxx")) 
+  if ( a_104_16 + b_104_16 > c_104_16 && a_104_16 + c_104_16 > b_104_16 && b_104_16+ c_104_16 > a_104_16){
+     console.log("yes")
+  } else {
+    console.log("no")
+  }
+</script>
+
+<script id="ch0104/17" xtype="xxx">
+  // 公元年分除以4不可整除，为平年。 // 公元年分除以4可整除但除以100不可整除，为闰年
+   // 公元年分除以100可整除但除以400不可整除，为平年。 
+  // 公元年分除以400可整除但除以3200不可整除，为闰年。 
+  // 公元年分除以3200可整除，为平年。
+  var year_104_17 = Number(prompt("xxx"))
+   if((year_104_17 % 4 == 0 && year_104_17 % 100 !== 0) || (year_104_17 % 400 == 0 && year_104_17 % 3200 !== 0) ){
+    console.log("Y") 
+    } else { 
+      console.log("N") 
+    }
+
+</script>
+
+<script id="ch0104/18" xtype="xxx">
 
 
-
+</script>
 
 
 
