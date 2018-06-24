@@ -566,7 +566,7 @@ console.log(mony_104_14 + 5)
   }
 </script>
 
-<script id="ch0104/17" xtype="xxx">
+<script id="ch0104/17" type="xxx">
   // 公元年分除以4不可整除，为平年。 // 公元年分除以4可整除但除以100不可整除，为闰年
    // 公元年分除以100可整除但除以400不可整除，为平年。 
   // 公元年分除以400可整除但除以3200不可整除，为闰年。 
@@ -580,11 +580,85 @@ console.log(mony_104_14 + 5)
 
 </script>
 
-<script id="ch0104/18" xtype="xxx">
+<script id="ch0104/18" type="xxx">
+  var x_104_18 = Number(prompt("xx"))
+  var y_104_18 = Number(prompt("xxx"))
 
+  if ((1 >= x_104_18 || x_104_18 >-1 ) && (y_104_18 >= -1 || y_104_18 < -1)){
+  console.log("yes")
+  } else {
+    console.log("no")
+  }
+</script>
+
+<script id="ch0104/19" type="xxx">
+  var a_104_19 = Number(prompt("xxx"))
+  var b_104_19 = Number(prompt("xxx"))
+  var c_104_19 = prompt("xxx")
+
+ if (c_104_19 == "+") { 
+   console.log(a_104_19 + b_104_19 )
+ } else if (c_104_19 == "-") { 
+  console.log(a_104_19 - b_104_19 )
+ } else if (c_104_19 == "*") {
+  console.log(a_104_19 * b_104_19 )
+ } else if (c_104_19 == "/") {
+    if (b_104_19 == 0) {
+      console.log("Divided by zero!")
+    } else {
+      console.log(a_104_19 / b_104_19 )
+    }
+ } else {
+  console.log("Invalid operator!")
+ }
 
 </script>
 
+<script id="ch0104/20" type="xxx">
+    var a = 0
+    var b = 0
+    var c = 0
+    var x = 0
+    var x1 = 0
+    var x2 = 0
+
+
+      a = Number(prompt("请输入方程二次项 a:"))
+      b = Number(prompt("请输入方程一次项 b:"))
+      c = Number(prompt("请输入方程常数项 c:"))
+
+      var da = (b * b - 4 * a * c)
+      var dt = -( b / 2 * a)
+      
+      if(da < 0) {
+        //Δ小于零，为了能开方，先转化为正数
+        da = -1 * da
+        x1 = dt.toFixed(5) + "+" + (Math.sqrt(da) / (2 * a)).toFixed(5) + "i"
+        x2 = dt.toFixed(5) + "-" + (Math.sqrt(da) / (2 * a)).toFixed(5) + "i"
+        console.log("x1=" + x1 + ";" + "x2=" + x2)
+      } else if (da == 0) {
+        x = dt.toFixed(5)
+        console.log("x1=x2="+ x)
+      } else {
+        x1 = dt.toFixed(5) + (Math.sqrt(da) / (2 * a)).toFixed(5) 
+        x2 = dt.toFixed(5) - (Math.sqrt(da) / (2 * a)).toFixed(5) 
+        console.log("x1=" + x1 + ";" + "x2=" + x2)
+      }
+      
+
+</script>
+
+<script id="ch0104/21" type="xxx">
+var n_104_21 = Number(prompt("xxx"))
+var x_104_21 = Number(prompt("xxx"))
+var y_104_21 = Number(prompt("xxx"))
+
+var cous_104_21 = 0
+cous_104_21 = n_104_21 - (y_104_21 / x_104_21)
+cous_104_21 = parseInt(cous_104_21)
+cous_104_21 >= 0? console.log(cous_104_21):console.log("0")
+
+</script>
 
 
 </head>
