@@ -479,14 +479,40 @@
 </script>
 
 <script id="ch0104/10" type="xxx">
-  
+  var yw_104_10 = Number(prompt("xx"))
+  var sx_104_10 = Number(prompt("xx"))
 
+  yw_104_10 < 60 ? yw_104_10 = 0 : yw_104_10 = 1
+  sx_104_10 < 60 ? yw_104_10 = 0 : sx_104_10 = 1
 
-
+  if ((yw_104_10 + sx_104_10) == 1) {
+    console.log("1")
+  } else {
+    console.log("0")
+  }
 </script>
 
+<script id="ch0104/11" type="xxx">
+  var num_104_11 = Number(prompt("xx"))
+  if (num_104_11 == 1 || num_104_11 == 3 || num_104_11 == 5) {
+    console.log("NO")
+  } else {
+    console.log("YES")
+  }
+</script>
 
+<script id="ch0104/12" xtype="xxx">
+  var s_104_11 = Number(prompt("xx"))
+  var bik_104_11 = 0
+  var wal_104_11 = 0
 
+  bik_104_11 = (s_104_11 / 3) + 27 + 23
+  wal_104_11 = (s_104_11 / 1.2)
+
+  if (bik_104_11 < wal_104_11) console.log("Bike")
+  if (bik_104_11 == wal_104_11) console.log("All")
+  if (bik_104_11 > wal_104_11) console.log("Walk")
+</script>
 
 
 
