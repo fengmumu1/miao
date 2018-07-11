@@ -661,6 +661,178 @@ cous_104_21 >= 0? console.log(cous_104_21):console.log("0")
 </script>
 
 
+
+<script id="sort" sample-input="4 1 7" sample-output="1 4 7" comment="输入三个数，把此三个数按升序输出">
+    var a = Number(prompt("xxx"))
+    var b = Number(prompt("xxx"))
+    var c = Number(prompt("xxx"))
+    var num_temp = 0
+
+    if (a >= b && a >= c) {
+      //a最大 所以a放最后
+      num_temp = a
+      a = c
+      c = num_temp
+    } else if(a >= b) {
+      //说明a第二大 ，b最小 
+      num_temp = a
+      a = b
+      b = num_temp     
+
+    } else if (a >= c) {
+      //说明a第二大 ，c最小 
+      num_temp = c
+      c = a
+      a = num_temp
+    } else {
+      //a 最小 这可以不写 
+      a = a 
+    }
+  
+    if (b >= c) {
+      //a 拍好了 现在比较c b比c大 交换
+      num_temp = b
+      b = c
+      c = num_temp
+    } else {
+      b = b
+    }
+    console.log(a + " " + b + " " + c)
+  
+  </script>
+
+ <script id="narcissistic " sample-input="153" sample-output="YES" comment="判断一个数是否为水仙花数">
+    var num_shuixian = Number(prompt(""))
+
+    if (num_shuixian / 10000 > 1) {
+      if (num_shuixian == (parseInt(num_shuixian / 10000) ** 5 + parseInt(num_shuixian % 10000 / 1000) ** 5 + parseInt(num_shuixian % 1000 / 100) ** 5 + parseInt(num_shuixian % 100 / 10) **5 + parseInt(num_shuixian % 10) ** 5)) {
+        console.log("YES")
+      }
+    } else if (num_shuixian / 1000 > 1) {
+      if (num_shuixian == (parseInt(num_shuixian / 1000) ** 4 + parseInt( num_shuixian % 1000 / 100) ** 4 + parseInt(num_shuixian % 100 / 10) ** 4 + parseInt(num_shuixian % 10) **4)) {
+        console.log("YES")
+      }
+    } else if (num_shuixian / 100 > 1) {
+      if (num_shuixian == (parseInt(num_shuixian / 100) ** 3 + parseInt(num_shuixian % 100 / 10) ** 3 + parseInt(num_shuixian % 10) ** 3)) {
+        console.log("YES")
+      }
+    }
+   
+
+ </script>
+
+<script id="narcissistics" sample-input="" sample-output="" comment="找出100到10000以内所有的水仙花数">
+   for (var i = 100; i < 100000; i++) { 
+    if (i / 10000 > 1) {
+      if (i == (parseInt(i / 10000) ** 5 + parseInt(i % 10000 / 1000) ** 5 + parseInt(i % 1000 / 100) ** 5 + parseInt(i % 100 / 10) **5 + parseInt(i % 10) ** 5)) {
+        console.log(i)
+      }
+    } else if (i / 1000 > 1) {
+      if (i == (parseInt(i / 1000) ** 4 + parseInt( i % 1000 / 100) ** 4 + parseInt(i % 100 / 10) ** 4 + parseInt(i % 10) **4)) {
+        console.log(i)
+      }
+    } else if (i / 100 > 1) {
+      if (i == (parseInt(i / 100) ** 3 + parseInt(i % 100 / 10) ** 3 + parseInt(i % 10) ** 3)) {
+        console.log(i)
+      }
+    }
+   }
+
+</script>
+
+<script id="palindrom" sample-input="12321" sample-output="YES" comment="判断一个非负整数是否为回文数字">
+    var a_num = Number(prompt("xx"))
+    var b_num = 0;
+    var a_temp_num = a_num
+  
+    while (a_temp_num % 10 >= 1) {
+      b_num = b_num * 10 + a_temp_num % 10
+      a_temp_num = parseInt(a_temp_num / 10)
+    }
+  
+    if (a_num == b_num) {
+      console.log("YES")
+    }
+  </script>
+
+<script id="weekday" sample-input="2018 6" sample-output="5" comment="输入年份与月份，给出该年该月的第一天是星期几">
+    var year_weekday = Number(prompt("xxx"))
+    var mon_weekday = Number(prompt("xxx"))
+    //蔡勒公式
+    var we_weeday = 0
+    var y_weeday = year_weekday % 100
+    var c_weeday = parseInt(year_weekday / 100)
+    var result_weeday = 0;
+  
+    mon_weekday == 1 ? mon_weekday = 13 : mon_weekday = mon_weekday
+    mon_weekday == 2 ? mon_weekday = 14 : mon_weekday = mon_weekday
+  
+    we_weeday = (y_weeday + parseInt(y_weeday / 4) + parseInt(c_weeday / 4) - (2 * c_weeday) + parseInt(26 * (mon_weekday +
+      1) / 10))
+    we_weeday > 0 ? we_weeday = we_weeday : we_weeday = Math.abs(we_weeday)
+    result_weeday = parseInt(we_weeday) % 7
+    if (result_weeday == 0) result_weeday = 7
+  
+    console.log(result_weeday)
+  </script>
+
+  <script id="complete-number" sample-input="6" sample-output="YES" comment="判断一个数是否为完全数">
+    var num_comp = Number(prompt("xxx")) 
+    var resoult_compl = 0
+    for (var i = 1; i < num_comp / 2; i++) {
+      if (num_comp % i == 0) {
+        resoult_compl = resoult_compl + i + num_comp / i
+      }
+    }
+    resoult_compl =  resoult_compl -  num_comp
+    if(resoult_compl == num_comp) console.log("YES")
+  </script>
+
+  <script id="complete-numbers" sample-input="" sample-output="" comment="输出10000以内所有的完全数">
+    
+    var resoult_compl = 0
+    var num_comp = 0
+    var resoult_compl = 0
+    for (var j = 1; j < 10000; j++) {
+    
+      num_comp = j
+      for (var i = 1; i < num_comp / 2; i++) {
+        if (num_comp % i == 0) {
+          resoult_compl = resoult_compl + i + num_comp / i
+        }
+      }
+      resoult_compl =  resoult_compl -  num_comp
+      if(resoult_compl == num_comp) console.log(num_comp)
+      resoult_compl = 0
+
+    }
+    </script>
+
+    
+  <script id="prime" sample-input="7" sample-output="YES" comment="判断一个数是否为素数">
+    
+  </script>
+  <script id="primes" sample-input="" sample-output="" comment="输出100以内所有的素数">
+    
+  </script>
+  <script id="itob" sample-input="123" sample-output="123" comment="数字转换成字符串">
+    
+  </script>
+  <script id="lcf&lcm" sample-input="12 9" sample-output="36 3" comment="给定两个数，求它们的最小公倍数和最大公约数">
+    
+  </script>
+  <script id="7" sample-input="" sample-output="" comment="敲7">
+    
+  </script>
+  <script id="sqrt" sample-input="2" sample-output="1.414" comment="不使用Math.sqrt，求一个非负数的平方根，至少精确到小数点后3位">
+    
+  </script>
+
+
+
+
+
+
 </head>
 <body>
   
