@@ -1,6 +1,6 @@
 
 
-var f_lodash = {
+var fengmumu1 = {
   chunk: function(array, size) {
     
   }
