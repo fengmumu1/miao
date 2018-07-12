@@ -1,10 +1,10 @@
 var fengmumu1 = {
-  /**
-   * chunk 把一维数组按照指定数量，拆成二维数组，不能正好拆分的，多余的数组元素放到一个数组中
-   * @param {[]} array 一维数组
-   * @param {Number} size 数量
-   * @returns {[[]]} 分割后的数组
-   */
+   /**
+    * chunk 把一维数组按照指定数量，拆成二维数组，不能正好拆分的，多余的数组元素放到一 个数组中
+    * @param {[]} array 一维数组
+    * @param {Number} size 数量
+    * @returns {[[]]} 分割后的数组
+    */
     chunk: function(array, size) {
       debugger
       let cous = []
@@ -18,5 +18,22 @@ var fengmumu1 = {
         cous.push(array.slice(i,size + i))
       }
       return cous
-    }
+    },
+    
+    /**
+     * 返回一个删除了数组所有 false, null, 0, "", undefined, and NaN 数值的数组
+     * @param {[]} 原始数组
+     * @return {[]}
+     */
+     compact: function(array) {
+      let arry_temp = []
+      for(let i = 0; i <array.length; i++){
+        if( array[i] !== false && array[i] !== null && array[i] !== 0 && array[i] !== undefined && array[i] !== ''  && array[i] == array[i]) {
+          arry_temp.push(array[i])
+        }
+      }
+      return arry_temp
+     },
+
   }
+
