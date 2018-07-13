@@ -37,6 +37,7 @@ var fengmumu1 = {
       }
       return arry_temp
      },
+     
 
      /**
       * 返回第一个数组中不属于第二个数组的元素 
@@ -47,6 +48,8 @@ var fengmumu1 = {
       difference: function(old_arry, aim_arry){
         
       },
+
+
 
   }
 
