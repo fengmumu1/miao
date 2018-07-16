@@ -97,16 +97,17 @@ var fengmumu1 = {
       /**
        * 返回去掉num个元素后的数组
        * @param {[]} arry
-       * @param {[]} num
+       * @param {[]} num 默认为 1
        * @returns {[]}
        */
       drop: function(arry, num){
-        if(num === undefined) return arry
-        if(num > arry.length) num = 0
-        let cous = arry.splice(arry.length - num + 1, arry.length )
+        let cous = []
+        if(num === undefined) num = 1
+        if(num  > arry.length) num =  arry.length
+          cous = arry.splice(num , arry.length )
         return cous
       }
 
   }
 
- //console.log(fengmumu1.drop([1,2,3],5)) 
+//  console.log(fengmumu1.drop([1,2,3,4],4)) 
