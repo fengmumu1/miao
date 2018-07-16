@@ -45,12 +45,11 @@ var fengmumu1 = {
       * @param {[]} 非必须参数，对比数组，省略返回原始数组
       * @returns {[]} 对比后的数组
       */
-      difference: function(old_arry, aim_arry){
-        debugger
-        if(aim_arry === undefined) return old_arry
+      difference: function(old_arry,...arry){
+        aim_arry = [].concat(...arry)
         let cous = []
         for(let i = 0; i < old_arry.length; i++){
-          if(aim_arry.includes(old_arry[i])){
+          if(aim_arry.indexOf(old_arry[i]) === -1 ){
             cous.push(old_arry[i])
           }
         }
@@ -60,5 +59,4 @@ var fengmumu1 = {
 
   }
 
-console.log(fengmumu1.difference([1,2,3],[2,1]))
-
+// console.log(fengmumu1.difference([2,1,4,6]))
