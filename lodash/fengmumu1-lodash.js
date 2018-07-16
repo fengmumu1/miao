@@ -56,7 +56,46 @@ var fengmumu1 = {
         return cous
       },
 
+      /**
+      * 对arry和value分别用iteratee处理，然后对比二者的差异，返回与之对应的原始数据
+      * @param {[]} 必须参数，原始数组，省略返回[]
+      * @param {[]} 非必须参数，对比数组，省略返回原始数组
+      * @param {object} 非必须参数，处理函数，省略返回原始数组
+      * @returns {[]} 对比后的数组
+      */
+      differenceBy: function(arry,value,iteratee){
+        debugger
+        let cous = []
+        let value_temp = []
+        if(typeof iteratee === 'function') {
+          for(let i =0; i < value.length; i++) {
+            value_temp.push(iteratee(value[i]))
+          }
+          for(let i = 0; i < arry.length; i++){
+            if(value_temp.indexOf(iteratee(arry[i])) === -1 ){
+              cous.push(arry[i])
+            }
+          }
+          return cous
+        }
+
+        if(typeof iteratee === 'string') {
+          for(let i =0; i < value.length; i++) {
+            value_temp.push(value[i][iteratee])
+          }
+          for(let i = 0; i < arry.length; i++){
+            if(value_temp.indexOf(arry[i][iteratee]) === -1 ){
+              cous.push(arry[i])
+            }
+          }
+          return cous
+        }
+        if(iteratee === undefined){
+          return fengmumu1.difference(arry,value)
+        }
+      },
+
 
   }
 
-// console.log(fengmumu1.difference([2,1,4,6]))
+ console.log(fengmumu1.differenceBy([2,1,4,6],[1,4,5]))
