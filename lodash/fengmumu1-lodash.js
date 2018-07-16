@@ -102,10 +102,11 @@ var fengmumu1 = {
        */
       drop: function(arry, num){
         if(num === undefined) return arry
-        let cous = arry.slice(num)
+        if(num > arry.length) num = 0
+        let cous = arry.splice(arry.length - num + 1, arry.length )
         return cous
       }
 
   }
 
-//  console.log(fengmumu1.difference([2,1],[1,2]))
+ //console.log(fengmumu1.drop([1,2,3],5)) 
