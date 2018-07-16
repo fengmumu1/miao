@@ -46,10 +46,19 @@ var fengmumu1 = {
       * @returns {[]} 对比后的数组
       */
       difference: function(old_arry, aim_arry){
-        
+        debugger
+        if(aim_arry === undefined) return old_arry
+        let cous = []
+        for(let i = 0; i < old_arry.length; i++){
+          if(aim_arry.includes(old_arry[i])){
+            cous.push(old_arry[i])
+          }
+        }
+        return cous
       },
 
 
-
   }
+
+console.log(fengmumu1.difference([1,2,3],[2,1]))
 
