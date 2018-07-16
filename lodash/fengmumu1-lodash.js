@@ -64,7 +64,6 @@ var fengmumu1 = {
       * @returns {[]} 对比后的数组
       */
       differenceBy: function(arry,value,iteratee){
-        debugger
         let cous = []
         let value_temp = []
         if(typeof iteratee === 'function') {
@@ -95,7 +94,18 @@ var fengmumu1 = {
         }
       },
 
+      /**
+       * 返回去掉num个元素后的数组
+       * @param {[]} arry
+       * @param {[]} num
+       * @returns {[]}
+       */
+      drop: function(arry, num){
+        if(num === undefined) return arry
+        let cous = arry.slice(num)
+        return cous
+      }
 
   }
 
- console.log(fengmumu1.differenceBy([2,1,4,6],[1,4,5]))
+ console.log(fengmumu1.drop([1,2,3,4,5,6],2))
