@@ -46,7 +46,7 @@ var fengmumu1 = {
       * @returns {[]} 对比后的数组
       */
       difference: function(old_arry,...arry){
-        aim_arry = [].concat(...arry)
+        let aim_arry = [].concat(...arry)
         let cous = []
         for(let i = 0; i < old_arry.length; i++){
           if(aim_arry.indexOf(old_arry[i]) === -1 ){
@@ -108,4 +108,4 @@ var fengmumu1 = {
 
   }
 
- console.log(fengmumu1.drop([1,2,3,4,5,6],2))
+//  console.log(fengmumu1.difference([2,1],[1,2]))
