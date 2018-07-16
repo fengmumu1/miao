@@ -106,8 +106,22 @@ var fengmumu1 = {
         if(num  > arry.length) num =  arry.length
           cous = arry.splice(num , arry.length )
         return cous
-      }
+      },
+
+      /**
+       * 返回从右边去掉num个元素后的数组
+       * @param {[]} arry
+       * @param {[]} num 默认为 1
+       * @returns {[]}
+       */
+      dropRight: function(arry, num){
+        let cous = []
+        if(num === undefined) num = 1
+        if(num  > arry.length) num =  arry.length
+          cous = arry.splice(0 , arry.length - num )
+        return cous
+      },
 
   }
 
-//  console.log(fengmumu1.drop([1,2,3,4],4)) 
+//  console.log(fengmumu1.dropRight([1,2,3,4],8)) 
