@@ -219,8 +219,47 @@ var fengmumu1 = {
         return array[0]
       },
 
+      /**
+       * @description 返回查找元素在数组中首次出现的位置(下标)
+       * @param {[]} array 目标数组
+       * @param {*} value 需要查找的元素数值
+       * @param {Number} fromIndex 查找的起始位置，小于0从末未开始查找，可以省略，默认为0
+       * @returns {number} 找到就传回元素下标。没有就传回-1
+       */
+      indexOf: function(array, value, fromIndex){
+        if(fromIndex === undefined) fromIndex = 0
+        if(fromIndex >= 0) {
+          for(let i = fromIndex; i < array.length; i++ ){
+            if(array[i] === value) return i
+          }
+        } else {
+          for(let i = array.length + fromIndex - 1; i > 0; i-- ){
+            if(array[i] === value) return i
+          }
+        }
+        return -1
+      },
+      /**
+       * @description 返回去除了数组最后一个元素的数组
+       * @param {[]} array 目标数组
+       * @returns {[]} 
+       */
+      initial: function(array){
+        return array.slice().pop()
+      },
+
+      /**
+       * @description 返回数组所有元素的交集
+       * @param {[]} array 目标数组
+       * @returns {[]} 
+       */
+      intersection: function(array){
+       return array.reduce(function(initValue,iteam){
+          return initValue.filter(iteams => iteam.indexOf(iteams) !== -1)
+        })
+      },
 
 }
 
-// 输入：flattenDepth([1,[2,[3,[4]],5]],1)
-// console.log(fengmumu1.flattenDepth([1,[2,[3,[4]],5]],1))
+
+//  console.log(fengmumu1.intersection([[2, 1],[4, 2],[1, 2]]))
