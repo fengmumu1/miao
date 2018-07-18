@@ -151,16 +151,19 @@ var fengmumu1 = {
       
       flatten: function(arry){
         let result = []
-        for(let i = 0; i < arry.length; i++) {
-          if(Array.isArray(arry[i])) {
-            for(item in arry[i]) {
-              result.push(arry[i][item])
-            }
-          } else {
-            result.push(arry[i])
-          }
-        }
+        // for(let i = 0; i < arry.length; i++) {
+        //   if(Array.isArray(arry[i])) {
+        //     for(item in arry[i]) {
+        //       result.push(arry[i][item])
+        //     }
+        //   } else {
+        //     result.push(arry[i])
+        //   }
+        // }
+        result.concat(...arry)
         return result
+
+
       }, 
 
 
