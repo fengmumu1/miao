@@ -210,8 +210,17 @@ var fengmumu1 = {
         }
         return result
       },
+      /**
+       * @description 返回数组的第一个元素
+       * @param {[]} array 目标数组
+       * @returns {*} 
+       */
+      head: function(array) {
+        return array[0]
+      },
 
 
 }
 
-console.log(fengmumu1.flattenDepth([1,[2,[3,[4]],5]],1)) 
+// 输入：flattenDepth([1,[2,[3,[4]],5]],1)
+// console.log(fengmumu1.flattenDepth([1,[2,[3,[4]],5]],1))
