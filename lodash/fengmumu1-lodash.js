@@ -160,10 +160,8 @@ var fengmumu1 = {
         //     result.push(arry[i])
         //   }
         // }
-        result.concat(...arry)
-        return result
-
-
+        // return result
+        return result.concat(...arry)
       }, 
 
 
