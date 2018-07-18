@@ -260,7 +260,9 @@ var fengmumu1 = {
        * @param {[]} array 目标数组
        * @returns {[]} 
        */
-      intersection: function(array){
+      intersection: function(...arrays){
+        let array = []
+        array.push(...arrays)
        return array.reduce(function(initValue,iteam){
           return initValue.filter(iteams => iteam.indexOf(iteams) !== -1)
         })
@@ -269,4 +271,4 @@ var fengmumu1 = {
 }
 
 
-//  console.log(fengmumu1.indexOf([1,2,1,2],2,-12))
+ console.log(fengmumu1.intersection([2, 1], [2, 3]))
