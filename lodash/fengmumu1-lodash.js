@@ -184,19 +184,24 @@ var fengmumu1 = {
       flattenDepth: function(array, depth){
         let result = []
         let temp = []
-        if(depth === 0) return [...array]
-        for(let i = 0; i < arry.length; i++) {
-          if(Arry.isArray(array[i])){
-            temp = fengmumu1.flattenDeep(array[i],depth - 1)
+        if(depth === 0) return array.slice()
+        for(let i = 0; i < array.length; i++) {
+          if(Array.isArray(array[i])){
+            temp = fengmumu1.flattenDepth(array[i],depth - 1)
             result = [...result, ...temp]
           } else {
-            result.push()
+            result.push(array[i])
           }
         }
         return result
       },
 
 
+      fromPairs: function(paris){
+
+      },
+
+
 }
 
-// console.log(fengmumu1.flatMap([1,2,3,4],function(n){ return [n , n] })) 
+console.log(fengmumu1.flattenDepth([1,[2,[3,[4]],5]],1)) 
