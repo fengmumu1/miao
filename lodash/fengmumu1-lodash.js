@@ -227,16 +227,21 @@ var fengmumu1 = {
        * @returns {number} 找到就传回元素下标。没有就传回-1
        */
       indexOf: function(array, value, fromIndex){
+        let i = 0
         if(fromIndex === undefined) fromIndex = 0
         if(fromIndex >= 0) {
-          for(let i = fromIndex; i < array.length; i++ ){
+          for(i = fromIndex; i < array.length; i++ ){
             if(array[i] === value) return i
           }
-        } else {
-          for(let i = array.length + fromIndex - 1; i > 0; i-- ){
-            if(array[i] === value) return i
-          }
-        }
+        } else if(array.length + fromIndex - 1 >= 0 ){
+            for(i = array.length + fromIndex - 1; i > 0; i--){
+              if(array[i] === value) return i
+            } 
+          } else {
+            for(i = 0; i > 0; i--){
+              if(array[i] === value) return i
+            } 
+          }      
         return -1
       },
       /**
@@ -245,7 +250,9 @@ var fengmumu1 = {
        * @returns {[]} 
        */
       initial: function(array){
-        return array.slice().pop()
+        let soult = array.slice()
+        soult.pop()
+        return soult
       },
 
       /**
