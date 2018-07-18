@@ -182,7 +182,18 @@ var fengmumu1 = {
        * @param {[]} depth 嵌套深度(可省略) 
        */
       flattenDepth: function(array, depth){
-
+        let result = []
+        let temp = []
+        if(depth === 0) return [...array]
+        for(let i = 0; i < arry.length; i++) {
+          if(Arry.isArray(array[i])){
+            temp = fengmumu1.flattenDeep(array[i],depth - 1)
+            result = [...result, ...temp]
+          } else {
+            result.push()
+          }
+        }
+        return result
       },
 
 
