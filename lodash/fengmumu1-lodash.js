@@ -238,7 +238,7 @@ var fengmumu1 = {
               if(array[i] === value) return i
             } 
           } else {
-            for(i = 0; i > 0; i--){
+            for(i = 0; i < array.length; i++){
               if(array[i] === value) return i
             } 
           }      
@@ -269,4 +269,4 @@ var fengmumu1 = {
 }
 
 
-//  console.log(fengmumu1.intersection([[2, 1],[4, 2],[1, 2]]))
+//  console.log(fengmumu1.indexOf([1,2,1,2],2,-12))
