@@ -138,17 +138,10 @@ var fengmumu1 = {
       },
 
       /**
-       * @description 根据deep减少数组的嵌套等级
-       * @param {[]} array 目标数组
-       * @param {[]} depth 嵌套深度(可省略) 
+       * @description 减少一个嵌套
+       * @param {[]} arry 目标数组
+       * @returns {[]} 减少后的数组
        */
-      flattenDepth: function(array, depth){
-        if(arguments.length === 1) return array 
-      
-
-      },
-
-      
       flatten: function(arry){
         let result = []
         // for(let i = 0; i < arry.length; i++) {
@@ -163,6 +156,34 @@ var fengmumu1 = {
         // return result
         return result.concat(...arry)
       }, 
+
+      /**
+       * @description 把数组变成扁平化的数组
+       * @param {[]} 目标数组
+       * @returns {[]} 处理后的数组
+       */
+      flattenDeep: function(arry){
+        let result = []
+        let temp = []        
+        for(let i = 0; i < arry.length; i++) {
+          if(Array.isArray(arry[i])){
+            temp =  fengmumu1.flattenDeep(arry[i])
+            result = [...result, ...temp]
+          } else {
+            result.push(arry[i])
+          }
+        } 
+        return result
+      },
+
+            /**
+       * @description 根据deep减少数组的嵌套等级
+       * @param {[]} array 目标数组
+       * @param {[]} depth 嵌套深度(可省略) 
+       */
+      flattenDepth: function(array, depth){
+
+      },
 
 
 }
