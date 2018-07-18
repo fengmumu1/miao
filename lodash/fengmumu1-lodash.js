@@ -122,6 +122,23 @@ var fengmumu1 = {
         return cous
       },
 
+      /**
+       * @description
+       * @param {[]} collextion 目标数组
+       * @param {object} [iteratee=_.identity] 处理函数(迭代处理) 其c传入参数为value, index|key, collection
+       * @returns {[]} 处理后的数组
+       */
+      flatMap: function(collextion,identity) {
+        let result = []
+        if(arguments.length === 1) return collextion 
+        collextion.forEach((value, index, collection) => {
+          identity(value, index, collection).forEach(value => result.push(value))
+        });
+        return result
+      },
+
+
+
   }
 
-//  console.log(fengmumu1.dropRight([1,2,3,4],8)) 
+// console.log(fengmumu1.flatMap([1,2,3,4],function(n){ return [n , n] })) 
