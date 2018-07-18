@@ -123,7 +123,7 @@ var fengmumu1 = {
       },
 
       /**
-       * @description
+       * @description 对数组进行迭代处理，迭代后的结果，扁平化的返回
        * @param {[]} collextion 目标数组
        * @param {object} [iteratee=_.identity] 处理函数(迭代处理) 其c传入参数为value, index|key, collection
        * @returns {[]} 处理后的数组
@@ -137,8 +137,33 @@ var fengmumu1 = {
         return result
       },
 
+      /**
+       * @description 根据deep减少数组的嵌套等级
+       * @param {[]} array 目标数组
+       * @param {[]} depth 嵌套深度(可省略) 
+       */
+      flattenDepth: function(array, depth){
+        if(arguments.length === 1) return array 
+      
+
+      },
+
+      
+      flatten: function(arry){
+        let result = []
+        for(let i = 0; i < arry.length; i++) {
+          if(Array.isArray(arry[i])) {
+            for(item in arry[i]) {
+              result.push(arry[i][item])
+            }
+          } else {
+            result.push(arry[i])
+          }
+        }
+        return result
+      }, 
 
 
-  }
+}
 
 // console.log(fengmumu1.flatMap([1,2,3,4],function(n){ return [n , n] })) 
