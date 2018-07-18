@@ -176,10 +176,11 @@ var fengmumu1 = {
         return result
       },
 
-            /**
+      /**
        * @description 根据deep减少数组的嵌套等级
        * @param {[]} array 目标数组
        * @param {[]} depth 嵌套深度(可省略) 
+       * @returns{[]}
        */
       flattenDepth: function(array, depth){
         let result = []
@@ -196,9 +197,18 @@ var fengmumu1 = {
         return result
       },
 
-
+      /**
+       * @description 返回一个键值对构成的对象
+       * @param {[]} paris 目标数组
+       * @returns {object}   
+       */
       fromPairs: function(paris){
-
+        let index
+        let result = {}
+        for(index in paris) {
+          result[paris[index][0]] = paris[index][1]
+        }
+        return result
       },
 
 
