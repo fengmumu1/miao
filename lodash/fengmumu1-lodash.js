@@ -94,7 +94,9 @@ var fengmumu1 = {
         }
       },
 
-
+      /**
+       * 
+       */
       differenceWith: function(array, values, comparator){
         array.filter( iteam => {for(value of values) return !comparator(iteam,value)
         })
