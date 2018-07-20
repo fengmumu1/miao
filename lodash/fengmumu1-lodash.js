@@ -95,9 +95,13 @@ var fengmumu1 = {
       },
 
       /**
-       * 
+       * @description 前两个参数传入comparator中，返回函数得出否定结论的元素数组
+       * @param {[]} array 
+       * @param {[]} values 
+       * @param {object} comparator 
+       * @returns {[]} 
        */
-      differenceWith: function(array, values, comparator){
+      differenceWith: function(array, values, comparator) {
         array.filter( iteam => {for(value of values) return !comparator(iteam,value)
         })
       },
@@ -128,6 +132,12 @@ var fengmumu1 = {
         if(num  > arry.length) num =  arry.length
           cous = arry.splice(0 , arry.length - num )
         return cous
+      },
+      /**
+       * 
+       */
+      dropRightWhile: function(){
+
       },
 
       /**
@@ -294,7 +304,56 @@ var fengmumu1 = {
       },
 
 
+  
+
+
+      /**
+       * @description  求数组所有元素和
+       * @param {[]} array
+       * @returns {[number]}
+       */
+      sum: function(array){
+        let result = 0  
+        return array.reduce((initvalue,iteam) => {
+          return initvalue + iteam
+        },result)
+      },
+
+      /**
+       * @description 求所有iteratee返回的元素的合
+       * @param {[]} 目标数组
+       * @param {object} 处理函数
+       * @returns  
+       */
+      sumBy: function(arry,iteratee){
+        let iteratees 
+        if( typeof iteratee === 'string') {
+          iteratees = iteam => iteam[iteratee]
+        } else {
+          iteratees = iteratee 
+        }
+        return this.sum(arry.map(iteratees))
+      },
+
+      /**
+       * @description 与原map不同的是可以传入对象
+       */
+      map: function(array,iteratee){
+        let result = []
+        for(index in array){
+          result.push(iteratee(array[index],index,array)) 
+        }
+        return result
+      },
+
+     filter: function(array,iteratee){
+      let result = []
+      for(index in array) {
+        if(iteratee(array[index],index,array)) result.push(array[index])
+      }
+      return result
+     },
 
 }
 
-//  debugger;console.log(fengmumu1.fromPairs(fengmumu1.toPairs({'a': 1, 'b': 2})))
+debugger;console.log(fengmumu1.filter())
