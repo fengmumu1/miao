@@ -94,6 +94,12 @@ var fengmumu1 = {
         }
       },
 
+
+      differenceWith: function(array, values, comparator){
+        array.filter( iteam => {for(value of values) return !comparator(iteam,value)
+        })
+      },
+
       /**
        * 返回去掉num个元素后的数组
        * @param {[]} arry
@@ -210,6 +216,23 @@ var fengmumu1 = {
         }
         return result
       },
+      /** 
+       * @description  把对象转化成键值对存放在数组中
+       * @param {object} obj 目标对象
+       * @returns {[]} 转化后的数组
+      */
+     toPairs: function(obj){
+      let result = []
+      let result_temp = []
+      let i = 0
+      for(let key in obj) {
+        result_temp.push(key)
+        result_temp.push(obj[key])
+        //slice 返回的是[star,end)
+        result.push(result_temp.slice(i,i += 2)) 
+      }
+      return result
+    },
       /**
        * @description 返回数组的第一个元素
        * @param {[]} array 目标数组
@@ -268,7 +291,8 @@ var fengmumu1 = {
         })
       },
 
+
+
 }
 
-
- console.log(fengmumu1.intersection([2, 1], [2, 3]))
+//  debugger;console.log(fengmumu1.fromPairs(fengmumu1.toPairs({'a': 1, 'b': 2})))
