@@ -102,7 +102,7 @@ var fengmumu1 = {
        * @returns {[]} 
        */
       differenceWith: function(array, values, comparator) {
-        array.filter( iteam => {for(value of values) return !comparator(iteam,value)
+       return array.filter( iteam => {for(value of values) return !comparator(iteam,value)
         })
       },
 
@@ -368,23 +368,30 @@ var fengmumu1 = {
      },
 
 
-     matches: function(obj){
+     match: function(obj){
        return function(objs){
           for(iteam in obj) {
-            if(obj[iteam] !== objs[iteam]) return false
+            if(obj[iteam] !== objs[iteam]) {
+              if(!isMatches(objs[iteam],obj[iteam])) {
+                return false
+              } else if(obj[iteam] !== objs[iteam]) {
+                return false
+              }
+            }
+            
           }
           return true
        }  
      },
 
-     isMatches: function(obj, souce){
+     isMatch: function(obj, souce){
        for(let iteam in souce){
          if(souce[iteam] !== obj[iteam]) return false
        }
        return true
      },
 
-     isMatchesWitch: function(objects, source, customizer) {
+     isMatchWitch: function(objects, source, customizer) {
        let result
        for(let index in objects) {
         result =  customizer (objects[index], source[index], index, objects, source)
@@ -393,12 +400,21 @@ var fengmumu1 = {
        }
         return true
      },
+     matches: function(obj){
+       return function(objs) {
+          this.isMatch(bojs, boj)
+       }
+     }
 
+     property:function(name){
+        return obj => obj[name]
+     },
 
+     
 }
 
  
 // _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
 // => [{ 'a': 4, 'b': 5, 'c': 6 }]
 
-// debugger;console.log(fengmumu1.filter()
+// debugger;console.log(fengmumu1.isMatches({'a': 5},{"a": 5}))
