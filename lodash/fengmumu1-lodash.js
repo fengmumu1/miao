@@ -134,11 +134,22 @@ var fengmumu1 = {
         return cous
       },
       /**
-       * 
+       * @description 创建一个切片数组，去除array中从 predicate 返回假值开始到尾部的部分。predicate 会传入3个参数： (value, index, array)。
        */
-      dropRightWhile: function(){
-
+      dropRightWhile: function(array, iteratee){
+        let iteratees
+        let result = []
+        if(typeof iteratee === 'object') {
+          iteratees = this.matches(iteratee)
+        } else {
+          iteratees = iteratee
+        }
+        for(index in array) {
+          if(!iteratees(array[index] , index,array)) result.push(array[index])
+        }
+        return result
       },
+
 
       /**
        * @description 对数组进行迭代处理，迭代后的结果，扁平化的返回
@@ -345,7 +356,9 @@ var fengmumu1 = {
         }
         return result
       },
-
+      /**
+       * @description 与原filter不同的是可以传入对象
+       */
      filter: function(array,iteratee){
       let result = []
       for(index in array) {
@@ -354,6 +367,38 @@ var fengmumu1 = {
       return result
      },
 
+
+     matches: function(obj){
+       return function(objs){
+          for(iteam in obj) {
+            if(obj[iteam] !== objs[iteam]) return false
+          }
+          return true
+       }  
+     },
+
+     isMatches: function(obj, souce){
+       for(let iteam in souce){
+         if(souce[iteam] !== obj[iteam]) return false
+       }
+       return true
+     },
+
+     isMatchesWitch: function(objects, source, customizer) {
+       let result
+       for(let index in objects) {
+        result =  customizer (objects[index], source[index], index, objects, source)
+        if(result === undefined) result = this.isMatches(objects, source)
+        if(result === false) return false
+       }
+        return true
+     },
+
+
 }
 
-// debugger;console.log(fengmumu1.filter())
+ 
+// _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
+// => [{ 'a': 4, 'b': 5, 'c': 6 }]
+
+// debugger;console.log(fengmumu1.filter()
