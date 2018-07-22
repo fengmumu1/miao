@@ -404,13 +404,13 @@ var fengmumu1 = {
        return function(objs) {
           this.isMatch(bojs, boj)
        }
-     }
+     },
 
      property:function(name){
         return obj => obj[name]
      },
 
-     
+
 }
 
  
