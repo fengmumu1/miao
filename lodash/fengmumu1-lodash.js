@@ -410,11 +410,37 @@ var fengmumu1 = {
         return obj => obj[name]
      },
 
+     keyBy: function(collection, iteratee){
+       let result = {}
+       let iteratees = iteratee
+       if(typeof iteratee === "string") iteratees = obj => obj[iteratee]
+       for(iteam in collection) {
+         result[iteratees(collection[iteam])] = collection[iteam]
+       }
+       return result
+     },
+
+     /**
+      * 创建一个对象，key 是 iteratee 遍历 collection(集合) 中的每个元素返回的结果。 分组值的顺序是由他们出现在 collection(集合) 中的顺序确定的。每个键对应的值负责生成 key 的元素组成的数组。iteratee 调用 1 个参数： (value)。
+      */
+     groupBy: function(array, iteratee){
+       let iteratees = iteratee
+       let result = {}
+       if(typeof iteratee === 'string') iteratees = obj => obj[iteratee]
+
+       for(iteam in array) {
+          if(iteratees(array[iteam]) in result) {
+            result[iteratees(array[iteam])].push(array[iteam])
+          } else {
+            result[iteratees(array[iteam])] = [array[iteam]]
+          }
+       }
+       return result
+     },
+
+
 
 }
 
- 
-// _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
-// => [{ 'a': 4, 'b': 5, 'c': 6 }]
 
-// debugger;console.log(fengmumu1.isMatches({'a': 5},{"a": 5}))
+debugger;console.log(fengmumu1.groupBy(['one', 'two', 'three'], 'length'))
