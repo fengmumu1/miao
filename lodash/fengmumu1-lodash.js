@@ -438,9 +438,75 @@ var fengmumu1 = {
        return result
      },
 
+     /**
+      * 使用 value 值来填充（替换） array，从start位置开始, 到end位置结束（但不包含end位置）。
+      */
+     fill: function(array, value, start = 0, end = array.length) {
+       for(let i = start; i < end; i++) {
+          array[i] = value
+       }
+     },
+
+     iteratee: function(fun){
+       let func = fun
+        if(Array.isArray(fun)) {
+          return function(obj){
+          for(let i = 0; i < fun.length; i += 2) {
+            if(fun[i + 1] !== obj[fun[i]]) {
+              return false
+            } else {
+              return true
+            } 
+          }
+          }
+        }
+       if(typeof fun === 'object') {
+         return function(obj){
+           for(let iteam in fun) {
+            if(fun[iteam] !== obj[iteam] ) {
+              return false
+            } else {
+              return true
+            }
+           }
+         }  
+       }
+
+       if(typeof fun === 'string') {
+         return function(obj) {
+           return obj[fun]
+         }
+       }
+     },
+
+     identity: function(array) {
+      return array
+     },
+
+     findIndex: function(array, interatee = this.indentity, fromIndex = 0) {
+      let interatees = this.iteratee(interatee ) 
+      for(let i = fromIndex; i < array.length; i++) {
+        if(interatees(array[i])) return i
+      }
+      return -1
+     }
 
 
 }
 
 
-debugger;console.log(fengmumu1.groupBy(['one', 'two', 'three'], 'length'))
+// 输入：findIndex([{"user":"barney","active":false},{"user":"fred","active":false},{"user":"pebbles","active":true}],"function(o)  {        return  o.user  ==  'barney';   }")
+// 输出/期望：0
+// =================
+
+
+
+// 源码：
+// (array, predicate = hohenheimsd.identity, fromIndex = 0) => {
+//     let detector = hohenheimsd.iteratee(predicate);
+//     for (let i = fromIndex; i < array.length; i++) {
+//         if (detector(array[i])) return i;
+//     }
+// }
+
+debugger;console.log(fengmumu1.findIndex([{"user":"barney","active":false},{"user":"fred","active":false},{"user":"pebbles","active":true}],"function(o)  {  return  o.user  ==  'barney';   }"))
