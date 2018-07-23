@@ -269,7 +269,7 @@ var fengmumu1 = {
        * @description 返回查找元素在数组中首次出现的位置(下标)
        * @param {[]} array 目标数组
        * @param {*} value 需要查找的元素数值
-       * @param {Number} fromIndex 查找的起始位置，小于0从末未开始查找，可以省略，默认为0
+       * @param {Number} fromIndex 查找的起始位置，小于0从末尾开始查找，可以省略，默认为0
        * @returns {number} 找到就传回元素下标。没有就传回-1
        */
       indexOf: function(array, value, fromIndex){
@@ -445,6 +445,7 @@ var fengmumu1 = {
        for(let i = start; i < end; i++) {
           array[i] = value
        }
+       return array
      },
 
      iteratee: function(fun){
@@ -489,8 +490,68 @@ var fengmumu1 = {
         if(interatees(array[i])) return i
       }
       return -1
-     }
+     },
 
+     /**
+      * 将 array 中的所有元素转换为由 separator 分隔的字符串。
+      */
+     join: function(array,separator = '') {
+       let resul = ''
+       for(let i = 0; i < array.length - 1; i++){
+        resul = resul + array[i] + separator
+       }
+       return resul = resul + array[array.length - 1]
+     },
+     
+     /**
+      * 获取array中的最后一个元素。
+      */
+     last: function(array){
+      return array[array.length - 1]
+     },
+
+     /**
+      * 这个方法类似 this.indexOf ，区别是它是从右到左遍历array的元素。
+      */
+     lastIndexOf: function(array, value, fromIndex=array.length-1) {
+        for(let i = fromIndex; i > 0; i--) {
+          if(array[i] === value) return i
+        }
+        return -1
+     },
+
+     /**
+      * 获取array数组的第n个元素。如果n为负数，则返回从数组结尾开始的第n个元素。
+      */
+     nth: function(array, n = 0) {
+      if(n < 0) n = array.length + n
+      return array[n]
+     },
+
+     /**
+      * 移除数组array中所有和给定值相等的元素
+      */
+     pull: function(array,...value) {
+       let aim = [].concat(...value)
+        for(let i = 0; i < array.length; i++) {
+          if(aim.indexOf(array[i]) !== -1) {
+            array.splice(i,1)
+            i--
+          }
+        }
+        return array
+     },
+
+     pullBy: function(array, value){
+      let aim = [].concat(value)
+      for(let i = 0; i < array.length; i++) {
+        if(aim.indexOf(array[i]) !== -1) {
+          array.splice(i,1)
+          i--
+        }
+      }
+      return array
+     },
 
 }
 
@@ -499,14 +560,11 @@ var fengmumu1 = {
 // 输出/期望：0
 // =================
 
+// 输入：pullAll(["a","b","c","a","b","c"],["a","c"])
+// 输出/期望：["b","b"]
+// =================
+// 输入：pullAll(["a","b","c","a","b","c"],["a","c"])
+// 输出/期望：["b","b"]
 
 
-// 源码：
-// (array, predicate = hohenheimsd.identity, fromIndex = 0) => {
-//     let detector = hohenheimsd.iteratee(predicate);
-//     for (let i = fromIndex; i < array.length; i++) {
-//         if (detector(array[i])) return i;
-//     }
-// }
-
-debugger;console.log(fengmumu1.findIndex([{"user":"barney","active":false},{"user":"fred","active":false},{"user":"pebbles","active":true}],"function(o)  {  return  o.user  ==  'barney';   }"))
+debugger;console.log(fengmumu1.pull(["a","b","c","a","b","c"],["a","c"]))
