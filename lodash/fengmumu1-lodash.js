@@ -553,6 +553,19 @@ var fengmumu1 = {
       return array
      },
 
+     reverse: function(array) {
+       let temp 
+       let i = 0
+       let j = array.length - 1
+       while(i < j) {
+        temp  = array[i]
+        array[i] = array[j]
+        i++
+        array[j] = temp
+        j--
+       }
+       return array
+     },
 }
 
 
@@ -560,11 +573,12 @@ var fengmumu1 = {
 // 输出/期望：0
 // =================
 
-// 输入：pullAll(["a","b","c","a","b","c"],["a","c"])
-// 输出/期望：["b","b"]
+
+// 输入：reverse([1,2,3])
+// 输出/期望：[3,2,1]
 // =================
-// 输入：pullAll(["a","b","c","a","b","c"],["a","c"])
-// 输出/期望：["b","b"]
+// 输入：reverse([1,2,3])
+// 输出/期望：[3,2,1]
 
 
-debugger;console.log(fengmumu1.pull(["a","b","c","a","b","c"],["a","c"]))
+debugger;console.log(fengmumu1.reverse([1,2,3,4]))
