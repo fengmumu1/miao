@@ -566,19 +566,76 @@ var fengmumu1 = {
        }
        return array
      },
+
+     /**
+      * 使用二进制的方式检索来决定 value值 应该插入到数组中 尽可能小的索引位置，以保证array的排序。
+      */
+     sortedIndex: function(array, value) {
+        let i = 0
+        while(value > array[i] && i < array.length - 1) i++ 
+        if(value > array[array.length - 1]) return array.length - 1
+        return i
+     },
+     /**
+      * 这个方法类似 indexOf，除了它是在已经排序的数组array上执行二进制检索。
+      */
+     sortedIndexOf: function(array, value) {
+      for(let i = 0; i < array.length; i++){
+        if((array[i]) === value) return i
+      }
+      return null
+     },
+
+     /**
+      * 此方法类似于 sortedIndex，除了 它返回 value值 在 array 中尽可能大的索引位置（index）。
+      */
+     sortedLastIndex: function(array, value) {
+      for(let i =  array.length - 1; i > 0 ; i--){
+        if(array[i] === value) return   i + 1
+      }
+      return null
+     },
+     
+     /**
+      * 创建一个按顺序排列的唯一值的数组。所有给定数组的元素值使用SameValueZero做等值比较，返回去重后的数组
+      */
+     union: function(...arrays) {
+      let temp = [].concat(...arrays)
+      let result = []
+      for(let i = 0; i < temp.length; i++){
+        if(!result.includes(temp[i])) result.push(temp[i])
+      }
+      return result
+     },
+
+     /**
+      * 这个方法类似 union，除了它接受一个 iteratee （迭代函数），调用每一个数组（array）的每个元素以产生唯一性计算的标准。iteratee 会传入一个参数：(value)。
+      */
+     unionBy: function(...args) {
+        let temp = [].concat(...args)
+        let iteratee = temp.pop()
+        let result = []
+        result.push(temp[0])
+        let iteratees = iteratee
+        if(typeof iteratee === 'string') iteratees = obj => obj[iteratee]
+        let falge = 0
+        for(let i = 0; i < temp.length; i++) {
+            for(index in result) {
+              if(iteratees(result[index]) !== iteratees(temp[i])) {
+                falge = 1
+              } else {
+                break
+              }
+            }
+            if(falge === 1) result.push(temp[i]) 
+            falge = 0
+        }
+        
+        return result
+     },
 }
 
 
-// 输入：findIndex([{"user":"barney","active":false},{"user":"fred","active":false},{"user":"pebbles","active":true}],"function(o)  {        return  o.user  ==  'barney';   }")
-// 输出/期望：0
-// =================
 
 
-// 输入：reverse([1,2,3])
-// 输出/期望：[3,2,1]
-// =================
-// 输入：reverse([1,2,3])
-// 输出/期望：[3,2,1]
-
-
-debugger;console.log(fengmumu1.reverse([1,2,3,4]))
+debugger;console.log(fengmumu1.unionBy([{"x":1}],[{"x":2},{"x":1}],"x"))
